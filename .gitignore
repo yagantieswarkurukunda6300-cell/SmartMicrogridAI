@@ -1,0 +1,17 @@
+﻿# MATLAB temporary files
+*.asv
+*.m~
+*.mex*
+slprj/
+*_ert_rtw/
+*_grt_rtw/
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+# Dependencies
+node_modules/
+# Environment secrets
+.env
+.env.*
+!.env.example

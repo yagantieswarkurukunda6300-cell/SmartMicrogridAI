@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>SmartMicrogridAI - Solar-Powered Smart Microgrid Simulation</title>
+    <meta name='description' content='Professional animated website for SmartMicrogridAI MATLAB R2022b microgrid simulation prototype'>
+    <link rel='stylesheet' href='css/style.css'>
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap' rel='stylesheet'>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+</head>
+<body>
+    <nav class='navbar'>
+        <div class='nav-container'>
+            <div class='nav-logo'>
+                <span class='logo-icon'>⚡</span>
+                <span class='logo-text'>SmartMicrogridAI</span>
+            </div>
+            <button class='nav-toggle' id='navToggle' aria-label='Toggle navigation'>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class='nav-menu' id='navMenu'>
+                <li class='nav-item'><a href='#home' class='nav-link'>Home</a></li>
+                <li class='nav-item'><a href='#microgrid' class='nav-link'>Microgrid</a></li>
+                <li class='nav-item'><a href='#dashboard' class='nav-link'>Dashboard</a></li>
+                <li class='nav-item'><a href='#charts' class='nav-link'>Charts</a></li>
+                <li class='nav-item'><a href='#features' class='nav-link'>Features</a></li>
+                <li class='nav-item'><a href='#results' class='nav-link'>Results</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id='home' class='hero'>
+        <div class='hero-bg-animation'>
+            <div class='energy-particle'></div>
+            <div class='energy-particle'></div>
+            <div class='energy-particle'></div>
+        </div>
+        <div class='hero-content'>
+            <div class='hero-badge'>MATLAB R2022b Simulation Prototype</div>
+            <h1 class='hero-title'>SmartMicrogridAI</h1>
+            <p class='hero-subtitle'>Solar-Powered Smart Microgrid with Intelligent Energy Management &amp; Protection</p>
+            <p class='hero-description'>A professional MATLAB script-based simulation demonstrating PV generation, battery storage, grid integration, variable loads, overload detection, and automatic load shedding in both grid-connected and islanded modes.</p>
+            <div class='hero-buttons'>
+                <a href='#dashboard' class='btn btn-primary'>View Dashboard</a>
+                <a href='https://github.com/' class='btn btn-secondary'>View on GitHub</a>
+            </div>
+        </div>
+        <div class='hero-scroll-indicator'>
+            <span>Scroll Down</span>
+            <div class='scroll-arrow'></div>
+        </div>
+    </header>
+
+    <section id='microgrid' class='section microgrid-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Microgrid Architecture</h2>
+                <p class='section-subtitle'>Visual representation of system components and energy flow</p>
+            </div>
+            <div class='microgrid-visual'>
+                <svg viewBox='0 0 800 400' class='microgrid-svg' role='img' aria-label='Microgrid diagram showing solar panels, battery, grid, and loads'>
+                    <defs>
+                        <linearGradient id='sunGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+                            <stop offset='0%' style='stop-color:#ffd700;stop-opacity:1' />
+                            <stop offset='100%' style='stop-color:#ff8c00;stop-opacity:1' />
+                        </linearGradient>
+                        <linearGradient id='batteryGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+                            <stop offset='0%' style='stop-color:#00ff88;stop-opacity:1' />
+                            <stop offset='100%' style='stop-color:#00d4ff;stop-opacity:1' />
+                        </linearGradient>
+                    </defs>
+                    <g class='component solar'>
+                        <rect x='50' y='50' width='80' height='60' rx='8' fill='url(#sunGrad)' opacity='0.9'/>
+                        <text x='90' y='85' text-anchor='middle' fill='#000' font-size='12' font-weight='600'>PV</text>
+                        <circle cx='90' cy='30' r='15' fill='url(#sunGrad)' class='sun-rotate'/>
+                    </g>
+                    <g class='component battery'>
+                        <rect x='360' y='170' width='80' height='60' rx='8' fill='url(#batteryGrad)' opacity='0.9'/>
+                        <rect x='370' y='180' width='60' height='40' rx='4' fill='none' stroke='#00ff88' stroke-width='2'/>
+                        <rect x='375' y='185' width='35' height='30' rx='2' fill='#00ff88' class='battery-fill'/>
+                        <text x='400' y='210' text-anchor='middle' fill='#000' font-size='12' font-weight='600'>BAT</text>
+                    </g>
+                    <g class='component grid'>
+                        <rect x='650' y='50' width='100' height='60' rx='8' fill='#4a5568' opacity='0.9' stroke='#00d4ff' stroke-width='2'/>
+                        <text x='700' y='85' text-anchor='middle' fill='#fff' font-size='12' font-weight='600'>GRID</text>
+                        <line x1='670' y1='65' x2='680' y2='75' stroke='#00d4ff' stroke-width='2'/>
+                        <line x1='680' y1='75' x2='670' y2='85' stroke='#00d4ff' stroke-width='2'/>
+                        <line x1='690' y1='65' x2='700' y2='75' stroke='#00d4ff' stroke-width='2'/>
+                        <line x1='700' y1='75' x2='690' y2='85' stroke='#00d4ff' stroke-width='2'/>
+                    </g>
+                    <g class='component load'>
+                        <rect x='50' y='290' width='80' height='60' rx='8' fill='#ff4757' opacity='0.9'/>
+                        <text x='90' y='325' text-anchor='middle' fill='#fff' font-size='12' font-weight='600'>LOAD</text>
+                        <circle cx='75' cy='315' r='3' fill='#fff'/>
+                        <circle cx='90' cy='315' r='3' fill='#fff'/>
+                        <circle cx='105' cy='315' r='3' fill='#fff'/>
+                    </g>
+                    <path class='flow-line flow-pv' d='M 130 80 L 250 80 L 250 200 L 360 200' stroke='#ffd700' stroke-width='3' fill='none' stroke-dasharray='10 5'/>
+                    <path class='flow-line flow-bat' d='M 440 200 L 550 200 L 550 80 L 650 80' stroke='#00ff88' stroke-width='3' fill='none' stroke-dasharray='10 5'/>
+                    <path class='flow-line flow-load' d='M 400 230 L 250 230 L 250 320 L 130 320' stroke='#ff4757' stroke-width='3' fill='none' stroke-dasharray='10 5'/>
+                    <path class='flow-line flow-grid' d='M 650 110 L 500 110 L 500 170 L 440 170' stroke='#00d4ff' stroke-width='3' fill='none' stroke-dasharray='10 5'/>
+                </svg>
+            </div>
+            <div class='flow-legend'>
+                <div class='legend-item'><span class='legend-color' style='background:#ffd700'></span><span>Solar PV</span></div>
+                <div class='legend-item'><span class='legend-color' style='background:#00ff88'></span><span>Battery</span></div>
+                <div class='legend-item'><span class='legend-color' style='background:#00d4ff'></span><span>Grid</span></div>
+                <div class='legend-item'><span class='legend-color' style='background:#ff4757'></span><span>Load</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id='dashboard' class='section dashboard-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Energy Dashboard</h2>
+                <p class='section-subtitle'>Real-time style monitoring (Demo values - illustrative only)</p>
+            </div>
+            <div class='dashboard-grid'>
+                <div class='dashboard-card card-solar'>
+                    <div class='card-header'>
+                        <span class='card-icon'>☀️</span>
+                        <span class='card-title'>Solar Generation</span>
+                    </div>
+                    <div class='card-value' id='solarValue'>4.2 kW</div>
+                    <div class='card-status status-active'>Active</div>
+                    <div class='card-bar'><div class='card-bar-fill solar-bar' style='width: 84%'></div></div>
+                </div>
+                <div class='dashboard-card card-load'>
+                    <div class='card-header'>
+                        <span class='card-icon'>🏠</span>
+                        <span class='card-title'>Load Demand</span>
+                    </div>
+                    <div class='card-value' id='loadValue'>3.8 kW</div>
+                    <div class='card-status'>Variable</div>
+                    <div class='card-bar'><div class='card-bar-fill load-bar' style='width: 76%'></div></div>
+                </div>
+                <div class='dashboard-card card-battery'>
+                    <div class='card-header'>
+                        <span class='card-icon'>🔋</span>
+                        <span class='card-title'>Battery SOC</span>
+                    </div>
+                    <div class='card-value' id='batteryValue'>65%</div>
+                    <div class='card-status status-charging'>Charging</div>
+                    <div class='battery-visual'>
+                        <div class='battery-container'>
+                            <div class='battery-level' id='batteryLevel' style='width: 65%'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='dashboard-card card-grid'>
+                    <div class='card-header'>
+                        <span class='card-icon'>⚡</span>
+                        <span class='card-title'>Grid Status</span>
+                    </div>
+                    <div class='card-value' id='gridValue'>Connected</div>
+                    <div class='card-status status-connected'>Online</div>
+                    <div class='grid-indicator'>
+                        <div class='grid-pulse'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id='charts' class='section charts-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Power Flow Analytics</h2>
+                <p class='section-subtitle'>24-hour simulation profiles (Demo data - not live from hardware)</p>
+            </div>
+            <div class='charts-grid'>
+                <div class='chart-card'>
+                    <h3 class='chart-title'>Solar Generation Profile</h3>
+                    <canvas id='solarChart'></canvas>
+                </div>
+                <div class='chart-card'>
+                    <h3 class='chart-title'>Load Demand vs Served Load</h3>
+                    <canvas id='loadChart'></canvas>
+                </div>
+                <div class='chart-card'>
+                    <h3 class='chart-title'>Battery State of Charge</h3>
+                    <canvas id='batteryChart'></canvas>
+                </div>
+                <div class='chart-card'>
+                    <h3 class='chart-title'>Grid Power &amp; Power Balance</h3>
+                    <canvas id='gridChart'></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class='section protection-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Grid Outage &amp; Load Curtailment</h2>
+                <p class='section-subtitle'>Protection mechanisms demonstration</p>
+            </div>
+            <div class='protection-grid'>
+                <div class='protection-card'>
+                    <h3>🔌 Grid Outage Simulation</h3>
+                    <p>Simulated outage window: <strong>10:00 - 14:00</strong> (Demo)</p>
+                    <div class='outage-timeline'>
+                        <div class='timeline-bar'>
+                            <div class='timeline-segment connected' style='left:0%; width:41.7%'>Grid Connected</div>
+                            <div class='timeline-segment islanded' style='left:41.7%; width:16.6%'>Islanded</div>
+                            <div class='timeline-segment connected' style='left:58.3%; width:41.7%'>Grid Connected</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='protection-card'>
+                    <h3>⚠️ Load Curtailment</h3>
+                    <p>Automatic load shedding during power shortages</p>
+                    <ul class='protection-list'>
+                        <li>✅ Islanded mode deficit handling</li>
+                        <li>✅ Grid-connected overload protection (Demo threshold)</li>
+                        <li>✅ Served load tracking and curtailment</li>
+                        <li>✅ Battery SOC limit enforcement (20% - 90%)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id='features' class='section features-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Key Features</h2>
+            </div>
+            <div class='features-grid'>
+                <div class='feature-card'>
+                    <div class='feature-icon'>☀️</div>
+                    <h3>Solar PV Modeling</h3>
+                    <p>Daily irradiance profile with temperature effects and power derating</p>
+                </div>
+                <div class='feature-card'>
+                    <div class='feature-icon'>🔋</div>
+                    <h3>Battery Management</h3>
+                    <p>Intelligent charging/discharging with SOC monitoring (20-90%) and efficiency modeling</p>
+                </div>
+                <div class='feature-card'>
+                    <div class='feature-icon'>🔌</div>
+                    <h3>Grid Integration</h3>
+                    <p>Seamless transition between grid-connected and islanded operating modes</p>
+                </div>
+                <div class='feature-card'>
+                    <div class='feature-icon'>📊</div>
+                    <h3>Variable Loads</h3>
+                    <p>Dynamic load profiles with disturbance scenarios</p>
+                </div>
+                <div class='feature-card'>
+                    <div class='feature-icon'>🛡️</div>
+                    <h3>Protection System</h3>
+                    <p>Overload detection and automatic load curtailment</p>
+                </div>
+                <div class='feature-card'>
+                    <div class='feature-icon'>📈</div>
+                    <h3>Comprehensive Monitoring</h3>
+                    <p>Real-time visualization of all system parameters</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id='results' class='section results-section'>
+        <div class='container'>
+            <div class='section-header'>
+                <h2 class='section-title'>Simulation Results</h2>
+                <p class='section-subtitle'>MATLAB R2022b simulation output</p>
+            </div>
+            <div class='results-content'>
+                <div class='results-image-container'>
+                    <img src='assets/SmartMicrogridAI_Results.png' alt='SmartMicrogridAI MATLAB simulation results showing PV, load, battery SOC, grid power, and protection status plots' class='results-image'>
+                </div>
+                <div class='results-info'>
+                    <h3>Simulation Outputs</h3>
+                    <ul class='results-list'>
+                        <li>📊 Solar PV power generation (kW)</li>
+                        <li>⚡ Load demand vs served load (kW)</li>
+                        <li>🔋 Battery State of Charge (%)</li>
+                        <li>🔌 Grid power import/export (kW)</li>
+                        <li>🛡️ Load shedding/protection status</li>
+                    </ul>
+                    <div class='tech-note'>
+                        <strong>Note:</strong> This is a MATLAB script-based simulation prototype (main_sim.m), not a completed Simulink model. All values shown are from simulation runs.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class='footer'>
+        <div class='container'>
+            <div class='footer-content'>
+                <div class='footer-section'>
+                    <div class='footer-logo'>
+                        <span class='logo-icon'>⚡</span>
+                        <span class='logo-text'>SmartMicrogridAI</span>
+                    </div>
+                    <p class='footer-description'>Solar-powered smart microgrid simulation prototype built with MATLAB R2022b</p>
+                </div>
+                <div class='footer-section'>
+                    <h4>Technology Stack</h4>
+                    <ul class='footer-links'>
+                        <li>MATLAB R2022b</li>
+                        <li>MATLAB Scripting</li>
+                        <li>Simulink/Simscape (toolboxes installed)</li>
+                        <li>HTML5, CSS3, JavaScript</li>
+                    </ul>
+                </div>
+                <div class='footer-section'>
+                    <h4>Quick Links</h4>
+                    <ul class='footer-links'>
+                        <li><a href='#home'>Home</a></li>
+                        <li><a href='#features'>Features</a></li>
+                        <li><a href='#results'>Results</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class='footer-bottom'>
+                <p>&copy; 2026 SmartMicrogridAI. Simulation prototype - illustrative/demo values where noted.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src='js/app.js'></script>
+</body>
+</html>
